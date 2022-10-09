@@ -1,0 +1,15 @@
+.home-container {
+    width: 80%;
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    -webkit-box-shadow: 2px 4px 24px 9px rgba(209, 209, 209, 1);
+    -moz-box-shadow: 2px 4px 24px 9px rgba(209, 209, 209, 1);
+    box-shadow: 2px 4px 24px 9px rgba(209, 209, 209, 1);
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
