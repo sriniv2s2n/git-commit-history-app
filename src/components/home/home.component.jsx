@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Octokit } from "@octokit/core";
 
 import "./home.styles.scss";
@@ -15,24 +15,33 @@ const Home = () => {
   const [personalAccessToken, setPersonalAccessToken] = useState("");
 
   const getCommitDetails = () => {
-    const octokit = new Octokit({
-      auth: personalAccessToken,
-    });
-    octokit
-      .request("GET /repos/sriniv2s2n/git-commit-history-app/commits", {
-        owner: "OWNER",
-        repo: "REPO",
-      })
-      .then((res) => {
-        setCommitDetails(res.data);
-        startTimer();
-      })
-      .catch((error) => {
-        alert(error);
-        setCommitDetails([]);
-        stopTimer();
+    if (personalAccessToken || localStorage.getItem("gitPersonalAccessToken")) {
+      const octokit = new Octokit({
+        auth:
+          personalAccessToken || localStorage.getItem("gitPersonalAccessToken"),
       });
+      octokit
+        .request("GET /repos/sriniv2s2n/git-commit-history-app/commits", {
+          owner: "OWNER",
+          repo: "REPO",
+        })
+        .then((res) => {
+          startTimer();
+          setCommitDetails(res.data);
+          if (personalAccessToken)
+            localStorage.setItem("gitPersonalAccessToken", personalAccessToken);
+        })
+        .catch((error) => {
+          alert(error);
+          setCommitDetails([]);
+          stopTimer();
+        });
+    }
   };
+
+  useEffect(() => {
+    getCommitDetails();
+  }, []);
 
   const startTimer = () => {
     stopTimer();
