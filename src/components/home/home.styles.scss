@@ -22,4 +22,22 @@
             margin-left:10px;
         }
     }
+
+    .commit-history-container {
+        display: flex;
+        flex-direction: column;
+
+        .commit-history-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid grey;
+
+            .header {
+                color: #1976d2;
+                font-size: 18px;
+                margin-right: 10px;
+                font-style: italic;
+            }
+        }
+    }
 }

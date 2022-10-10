@@ -39,4 +39,10 @@ $grey-color: grey;
         transition: 200ms ease-in-out all;
         font-family: inherit;
     }
+
+    .shrink {
+        top: -5px;
+        font-size: 10px;
+        color: #1976d2;
+    }
 }
