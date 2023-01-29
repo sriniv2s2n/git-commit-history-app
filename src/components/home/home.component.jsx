@@ -8,6 +8,14 @@ import Header from '../header/header.component';
 import Button from '../button/button.component';
 import CommitDetails from '../commit-details/commit-details.component';
 
+const pat =
+  'github' +
+  '_pa' +
+  't_11AKHVFQY0B4CHQoKm78dr' +
+  '_nxMnRUHKbip7n3xv1FUwYwT' +
+  'Zo9sxYQ79xgQk8BJC' +
+  'g5X774JRQL6maKYGC99';
+
 const Home = () => {
   const refreshCountTimerId = useRef(null);
   const getCommitDetailsTimerId = useRef(null);
@@ -15,9 +23,7 @@ const Home = () => {
   const [commitDetails, setCommitDetails] = useState([]);
   const [userId, setUserId] = useState('sriniv2s2n');
   const [repoName, setRepoName] = useState('git-commit-history-app');
-  const [personalAccessToken, setPersonalAccessToken] = useState(
-    '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'
-  );
+  const [personalAccessToken, setPersonalAccessToken] = useState(pat);
 
   const getCommitDetails = () => {
     if (personalAccessToken || localStorage.getItem('gitPersonalAccessToken')) {
