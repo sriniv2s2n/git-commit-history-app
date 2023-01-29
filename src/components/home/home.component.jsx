@@ -12,6 +12,8 @@ const Home = () => {
   const getCommitDetailsTimerId = useRef(null);
   const [refreshCount, setRefreshCount] = useState(30);
   const [commitDetails, setCommitDetails] = useState([]);
+  const [userId, setUserId] = useState("");
+  const [repoName, setRepoName] = useState("");
   const [personalAccessToken, setPersonalAccessToken] = useState("");
 
   const getCommitDetails = () => {
@@ -21,7 +23,7 @@ const Home = () => {
           personalAccessToken || localStorage.getItem("gitPersonalAccessToken"),
       });
       octokit
-        .request("GET /repos/sriniv2s2n/git-commit-history-app/commits", {
+        .request(`GET /repos/${userId}/${repoName}/commits`, {
           owner: "OWNER",
           repo: "REPO",
         })
@@ -68,10 +70,26 @@ const Home = () => {
       <Header />
       <div className="access-key-container">
         <Input
+          value={userId}
+          onChange={(e) => {
+            setUserId(e.target.value);
+          }}
+          label={"User Id"}
+        />
+        <Input
+          value={repoName}
+          onChange={(e) => {
+            setRepoName(e.target.value);
+          }}
+          label={"Repository Name"}
+        />
+        <Input
+          type="password"
           value={personalAccessToken}
           onChange={(e) => {
             setPersonalAccessToken(e.target.value);
           }}
+          label={"Personal Access Token"}
         />
         <Button btnLabel={"Fetch History"} onClick={getCommitDetails} />
       </div>

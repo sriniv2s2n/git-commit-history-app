@@ -5,7 +5,7 @@ const Input = (props) => {
     <div className="input-container">
       <input className="input" {...props} />
       <label className={`label ${props.value ? "shrink" : ""}`}>
-        Enter Personal Access Token
+        {props.label ?? ""}
       </label>
     </div>
   );
