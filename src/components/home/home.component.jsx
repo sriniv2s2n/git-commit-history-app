@@ -1,37 +1,40 @@
-import { useState, useRef, useEffect } from "react";
-import { Octokit } from "@octokit/core";
+import React from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { Octokit } from '@octokit/core';
 
-import "./home.styles.scss";
-import Input from "../input/input.component";
-import Header from "../header/header.component";
-import Button from "../button/button.component";
-import CommitDetails from "../commit-details/commit-details.component";
+import './home.styles.scss';
+import Input from '../input/input.component';
+import Header from '../header/header.component';
+import Button from '../button/button.component';
+import CommitDetails from '../commit-details/commit-details.component';
 
 const Home = () => {
   const refreshCountTimerId = useRef(null);
   const getCommitDetailsTimerId = useRef(null);
   const [refreshCount, setRefreshCount] = useState(30);
   const [commitDetails, setCommitDetails] = useState([]);
-  const [userId, setUserId] = useState("");
-  const [repoName, setRepoName] = useState("");
-  const [personalAccessToken, setPersonalAccessToken] = useState("");
+  const [userId, setUserId] = useState('sriniv2s2n');
+  const [repoName, setRepoName] = useState('git-commit-history-app');
+  const [personalAccessToken, setPersonalAccessToken] = useState(
+    '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'
+  );
 
   const getCommitDetails = () => {
-    if (personalAccessToken || localStorage.getItem("gitPersonalAccessToken")) {
+    if (personalAccessToken || localStorage.getItem('gitPersonalAccessToken')) {
       const octokit = new Octokit({
         auth:
-          personalAccessToken || localStorage.getItem("gitPersonalAccessToken"),
+          personalAccessToken || localStorage.getItem('gitPersonalAccessToken'),
       });
       octokit
         .request(`GET /repos/${userId}/${repoName}/commits`, {
-          owner: "OWNER",
-          repo: "REPO",
+          owner: 'OWNER',
+          repo: 'REPO',
         })
         .then((res) => {
           startTimer();
           setCommitDetails(res.data);
           if (personalAccessToken)
-            localStorage.setItem("gitPersonalAccessToken", personalAccessToken);
+            localStorage.setItem('gitPersonalAccessToken', personalAccessToken);
         })
         .catch((error) => {
           alert(error);
@@ -74,14 +77,14 @@ const Home = () => {
           onChange={(e) => {
             setUserId(e.target.value);
           }}
-          label={"User Id"}
+          label={'User Id'}
         />
         <Input
           value={repoName}
           onChange={(e) => {
             setRepoName(e.target.value);
           }}
-          label={"Repository Name"}
+          label={'Repository Name'}
         />
         <Input
           type="password"
@@ -89,9 +92,9 @@ const Home = () => {
           onChange={(e) => {
             setPersonalAccessToken(e.target.value);
           }}
-          label={"Personal Access Token"}
+          label={'Personal Access Token'}
         />
-        <Button btnLabel={"Fetch History"} onClick={getCommitDetails} />
+        <Button btnLabel={'Fetch History'} onClick={getCommitDetails} />
       </div>
       <div className="commit-history-container">
         <div className="commit-history-header">

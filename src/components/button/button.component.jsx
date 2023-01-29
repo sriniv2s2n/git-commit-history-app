@@ -1,4 +1,6 @@
-import "./button.styles.scss";
+import React from 'react';
+
+import './button.styles.scss';
 
 const Button = ({ btnLabel, onClick }) => {
   return (

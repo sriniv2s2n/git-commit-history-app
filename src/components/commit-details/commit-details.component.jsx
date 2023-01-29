@@ -1,5 +1,7 @@
-import moment from "moment";
-import "./commit-details.styles.scss";
+import React from 'react';
+import moment from 'moment';
+
+import './commit-details.styles.scss';
 
 const CommitDetails = ({ message, author, time }) => {
   return (
@@ -7,7 +9,7 @@ const CommitDetails = ({ message, author, time }) => {
       <div className="commit-main">📝 {message}</div>
       <div className="commit-footer">
         <div className="time">
-          ⏰ {moment(new Date(time)).format("MMMM DD, YYYY, h:mma")}
+          ⏰ {moment(new Date(time)).format('MMMM DD, YYYY, h:mma')}
         </div>
         <div className="author">👨🏽‍💻 {author}</div>
       </div>

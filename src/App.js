@@ -1,5 +1,7 @@
-import "./App.scss";
-import Home from "./components/home/home.component";
+import React from 'react';
+
+import './App.scss';
+import Home from './components/home/home.component';
 
 const App = () => {
   return (
