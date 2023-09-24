@@ -11,10 +11,10 @@ import CommitDetails from '../commit-details/commit-details.component';
 const pat =
   'github' +
   '_pa' +
-  't_11AKHVFQY0B4CHQoKm78dr' +
-  '_nxMnRUHKbip7n3xv1FUwYwT' +
-  'Zo9sxYQ79xgQk8BJC' +
-  'g5X774JRQL6maKYGC99';
+  '_11AKHVFQY0RJbZocklpt4e' +
+  '_3DDR3wSnbPDcp1YX2Y75Hrm' +
+  'S10NfED5kJ4g0YVKS' +
+  'SutBMXMD7BHgfYhTiky';
 
 const Home = () => {
   const refreshCountTimerId = useRef(null);
