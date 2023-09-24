@@ -10,7 +10,7 @@ import CommitDetails from '../commit-details/commit-details.component';
 
 const pat =
   'github' +
-  '_pa' +
+  '_pat' +
   '_11AKHVFQY0RJbZocklpt4e' +
   '_3DDR3wSnbPDcp1YX2Y75Hrm' +
   'S10NfED5kJ4g0YVKS' +
